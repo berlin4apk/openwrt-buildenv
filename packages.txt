@@ -12,7 +12,7 @@ python3.5
 python2.7
 unzip
 zlib1g-dev
-lib32gcc1
+lib32gcc1|lib32gcc-s1
 libc6-dev-i386
 subversion
 flex
@@ -67,8 +67,7 @@ libelf-dev
 libncurses5-dev
 libncursesw5-dev
 libssl-dev
-python
-python2.7-dev
+python|python2.7-dev
 python3
 unzip
 wget
