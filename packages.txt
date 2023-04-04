@@ -46,3 +46,4 @@ rsync
 gawk
 apt-transport-https
 ca-certificates
+genisoimage
