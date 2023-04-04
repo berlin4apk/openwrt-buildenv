@@ -67,7 +67,7 @@ libelf-dev
 libncurses5-dev
 libncursesw5-dev
 libssl-dev
-python|python2.7-dev
+{python,python2.7-dev}
 python3
 unzip
 wget
