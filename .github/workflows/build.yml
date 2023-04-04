@@ -27,6 +27,6 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        name: tete1030/openwrt-buildenv
-        username: ${{ secrets.DOCKER_USERNAME }}
+        name: ${{vars.DOCKER_IMAGENAME}}
+        username: ${{vars.DOCKER_USERNAME}}
         password: ${{ secrets.DOCKER_PASSWORD }}
