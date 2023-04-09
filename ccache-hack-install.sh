@@ -46,6 +46,15 @@ max_size=1500M
 # reshare=true
 EOF
 
+# Update symlinks
+sudo /usr/sbin/update-ccache-symlinks
+
+# Prepend ccache into the PATH
+echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc.form-docker-build
+echo 'export CONFIG_CCACHE=y' | tee -a ~/.bashrc.form-docker-build
+# Source bashrc to test the new PATH
+# source ~/.bashrc && echo $PATH
+
 
 # https://github.com/ccache/ccache/blob/master/test/suites/remote_file.bash
 touch test.h
@@ -53,5 +62,5 @@ echo '#include "test.h"' >test.c
 backdate test.h ||:
 #$CCACHE_COMPILE -c test.c
 ccache -svv
-PATH="/usr/lib/ccache:$PATH"' gcc -c test.c
+PATH="/usr/lib/ccache:$PATH" gcc -c test.c
 ccache -svv
