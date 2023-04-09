@@ -3,6 +3,7 @@
 # Copyright (c) 2019 P3TERX
 # From https://github.com/P3TERX/Actions-OpenWrt
 
+set -vx
 set -eo pipefail
 export DEBIAN_FRONTEND=noninteractive
 
