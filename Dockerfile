@@ -21,4 +21,6 @@ USER builder
 WORKDIR /home/builder
 RUN --mount=type=bind,source=.,target=/tmp/host cd /tmp/host && ./initenv.sh
 
-RUN --mount=type=bind,source=.,target=/tmp/host cd /tmp/host && ./ccache-hack-install.sh
+#FIXME# RUN --mount=type=bind,source=.,target=/tmp/host cd /tmp/host && ./ccache-hack-install.sh
+COPY ccache-hack-install.sh .
+RUN /bin/bash ccache-hack-install.sh
