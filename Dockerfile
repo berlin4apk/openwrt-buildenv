@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
-ARG UBUNTU=18.04
-FROM ubuntu:18.04
+ARG UBUNTU=22.04
+FROM ubuntu:22.04
 
 # uid on Github action host 
 # uid=1001(runner) gid=123(docker) groups=123(docker),4(adm),101(systemd-journal)
