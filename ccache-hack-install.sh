@@ -11,7 +11,7 @@ echo "Installing building components ..."
 sudo -E apt-get -qq update
 # shellcheck disable=SC2046
 #sudo -E apt-get -qq install $(grep -vE "^\s*#" packages.txt  | tr "\n" " ")
-sudo -E apt-get -qq install ccache
+sudo -E apt-get -qq install ccache xxhash zstd xz-utils
 sudo -E apt-get -qq autoremove --purge
 sudo -E apt-get -qq clean
 
@@ -25,7 +25,8 @@ echo "3b35ec9e8af0f849e66e7b5392e2d436d393adbb0574b7147b203943258c6205 *ccache-4
 
 
 
-cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
+### cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
+cat <<EOF | sudo tee /usr/local/etc/ccache.conf
 #cache_dir=/ccache/
 ###cache_dir=/dev/shm/ccache/
 #cache_dir=/tmp/ccache/
@@ -59,8 +60,14 @@ echo 'export CONFIG_CCACHE=y' | tee -a ~/.bashrc.form-docker-build
 # https://github.com/ccache/ccache/blob/master/test/suites/remote_file.bash
 touch test.h
 echo '#include "test.h"' >test.c
-backdate test.h ||:
+# backdate test.h ||:
 #$CCACHE_COMPILE -c test.c
+echo "#################"
+ccache -p
+echo "#################"
 ccache -svv
+echo "#################"
 PATH="/usr/lib/ccache:$PATH" gcc -c test.c
+echo "#################"
 ccache -svv
+echo "#################"
