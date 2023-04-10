@@ -8,11 +8,13 @@ git
 libncurses5-dev
 libz-dev
 patch
-python3.5
+#python3.5
+python3
 python2.7
 unzip
 zlib1g-dev
-lib32gcc1
+# lib32gcc1
+lib32gcc-s1
 libc6-dev-i386
 subversion
 flex
