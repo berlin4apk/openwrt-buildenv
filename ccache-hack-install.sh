@@ -29,15 +29,17 @@ export -p | grep -i XDG ||:
 ##sudo mkdir -p /run/user/$(id -u)/ccache-tmp
 # sudo chown --verbose -R $(whoami):$(id -ng) /run/user/$(id -u)/ccache-tmp
 ## sudo chown --verbose -R "$(id -u):$(id -g)" /run/user/$(id -u)/ccache-tmp
+echo 'set -x' | tee -a ~/.bashrc
 echo 'sudo mkdir -p /run/user/$(id -u)/ccache-tmp' | tee -a ~/.bashrc
 echo 'sudo chown --verbose -R "$(id -u):$(id -g)" /run/user/$(id -u)/ccache-tmp' | tee -a ~/.bashrc
 echo 'sudo mkdir -p /dev/shm/$(id -u)/ccache/' | tee -a ~/.bashrc
 echo 'sudo chown --verbose -R "$(id -u):$(id -g)" /dev/shm/$(id -u)/ccache/' | tee -a ~/.bashrc
 echo 'sudo mkdir -p /dev/shm/ccache/' | tee -a ~/.bashrc
 echo 'sudo chown --verbose -R "$(id -u):$(id -g)" /dev/shm/ccache/' | tee -a ~/.bashrc
+echo 'df -ha' | tee -a ~/.bashrc
 # Source bashrc to test the new PATH
 source ~/.bashrc ||:
-ls -latr /dev/shm/ /run/user/
+ls -latrR /dev/shm/ /run/user/ ||:
 
 ### cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
 cat <<EOF | sudo tee /usr/local/etc/ccache.conf
