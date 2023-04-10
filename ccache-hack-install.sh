@@ -41,7 +41,10 @@ hard_link=false
 umask=002
 #secondary_storage="http://172.17.0.1:8080|layout=bazel"
 #secondary_storage="file://home/builder/.ccache"
-remote_storage="file:/home/builder/.ccache|file:/home/builder/openwrt/.ccache|file:/home/builder/ccache|file:/home/builder/openwrt/ccache"
+remote_storage="file:/home/builder/.ccache|umask=002"
+remote_storage="file:/home/builder/openwrt/.ccache|umask=002"
+remote_storage="file:/home/builder/ccache|umask=002"
+remote_storage="file:/home/builder/openwrt/ccache|umask=002"
 max_size=1500M
 # reshare (CCACHE_RESHARE or CCACHE_NORESHARE, see Boolean values above)
 # If true, ccache will write results to secondary storage even for primary storage cache hits. The default is false.
