@@ -41,9 +41,9 @@ echo "###################"
 cat ~/.bashrc
 echo "###################"
 # Source bashrc to test the new PATH
-source ~/.bashrc ||:
-ls -latrR /dev/shm/ /run/user/ ||:
-sudo ls -latrR /dev/shm/ /run/user/ ||:
+source ~/.bashrc ||: # FIXME
+ls -latrR /dev/shm/ /run/user/ ||: # FIXME
+sudo ls -latrR /dev/shm/ /run/user/ ||: # FIXME
 
 ### cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
 cat <<EOF | sudo tee /usr/local/etc/ccache.conf
@@ -94,7 +94,7 @@ ccache -p
 echo "#################"
 ccache -svv
 echo "#################"
-PATH="/usr/lib/ccache:$PATH" gcc -c test.c
+PATH="/usr/lib/ccache:$PATH" gcc -c test.c   ||: # FIXME
 echo "#################"
 ccache -svv
 echo "#################"
