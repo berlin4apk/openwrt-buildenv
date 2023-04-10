@@ -23,8 +23,8 @@ curl -LORJ https://db.debian.org/fetchkey.cgi?fingerprint=5A939A71A46792CF57866A
 echo "3b35ec9e8af0f849e66e7b5392e2d436d393adbb0574b7147b203943258c6205 *ccache-4.8-linux-x86_64.tar.xz" | sha256sum -c \
 && sudo tar -xJvf ccache-4.8-linux-x86_64.tar.xz --strip-components=1 -C /usr/bin/
 
-export -p | grep -i XDG_RUNTIME_DIR
-export -p | grep -i XDG
+export -p | grep -i XDG_RUNTIME_DIR ||:
+export -p | grep -i XDG ||:
 
 ### cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
 cat <<EOF | sudo tee /usr/local/etc/ccache.conf
