@@ -37,9 +37,13 @@ echo 'sudo chown --verbose -R "$(id -u):$(id -g)" /dev/shm/$(id -u)/ccache/' | t
 echo 'sudo mkdir -p /dev/shm/ccache/' | tee -a ~/.bashrc
 echo 'sudo chown --verbose -R "$(id -u):$(id -g)" /dev/shm/ccache/' | tee -a ~/.bashrc
 echo 'df -ha' | tee -a ~/.bashrc
+echo "###################"
+cat ~/.bashrc
+echo "###################"
 # Source bashrc to test the new PATH
 source ~/.bashrc ||:
 ls -latrR /dev/shm/ /run/user/ ||:
+sudo ls -latrR /dev/shm/ /run/user/ ||:
 
 ### cat <<EOF | sudo tee /etc/ccache.conf.form-docker-build | sudo tee /usr/local/etc/ccache.conf.form-docker-build
 cat <<EOF | sudo tee /usr/local/etc/ccache.conf
